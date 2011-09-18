@@ -85,6 +85,7 @@ MACRO_CONFIG_INT(SvVoteKickBantime, sv_vote_kick_bantime, 5, 0, 1440, CFGFLAG_SE
 MACRO_CONFIG_INT(SvStartWeapon, sv_start_weapon, 0, 0, 6, CFGFLAG_SERVER, "Choose starting weapon. 0 = off, 1 = hammer, 2 = gun, 3 = shotgun, 4 = grenade, 5 = rifle, 6 = katana")
 MACRO_CONFIG_INT(SvInfiniteAmmo, sv_inf_ammo, 0, 0, 1, CFGFLAG_SERVER, "Infinite ammo?")
 MACRO_CONFIG_INT(SvInstaGib, sv_instagib, 0, 0, 1, CFGFLAG_SERVER, "Instagib mode")
+MACRO_CONFIG_INT(SvPickups, sv_pickups, 1, 0, 1, CFGFLAG_SERVER, "Spawn pickups on the map?")
 // end dikumod
 
 // debug
