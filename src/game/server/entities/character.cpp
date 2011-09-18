@@ -601,6 +601,11 @@ void CCharacter::Tick()
         if (m_FloorLavaTick <= 0) {
             m_Health -= 1;
             m_FloorLavaTick += g_Config.m_SvFloorLavaTime * Server()->TickSpeed() / 1000;
+
+            if (m_Health <= 0) {
+                // TODO: Make death less hacky
+                Die(m_pPlayer->GetCID(), WEAPON_HAMMER);
+            }
         }
     }
     // end dikumod
