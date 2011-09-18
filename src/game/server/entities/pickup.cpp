@@ -27,10 +27,12 @@ void CPickup::Reset()
 
 void CPickup::Tick()
 {
+    // dikumod begin
     if (!g_Config.m_SvPickups) {
         m_SpawnTick = Server()->Tick() + 1;
         return;
     }
+    // dikumod end
 
 	// wait for respawn
 	if(m_SpawnTick > 0)
