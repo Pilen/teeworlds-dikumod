@@ -137,7 +137,10 @@ void CCharacter::HandleNinja()
 	if(m_ActiveWeapon != WEAPON_NINJA)
 		return;
 
-	if ((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000))
+    // start dikumod
+	if ((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000)
+     && !g_Config.m_SvInfiniteAmmo )
+    // end dikumod
 	{
 		// time's up, return
 		m_aWeapons[WEAPON_NINJA].m_Got = false;
