@@ -86,6 +86,7 @@ MACRO_CONFIG_INT(SvStartWeapon, sv_start_weapon, 0, 0, 6, CFGFLAG_SERVER, "Choos
 MACRO_CONFIG_INT(SvInfiniteAmmo, sv_inf_ammo, 0, 0, 1, CFGFLAG_SERVER, "Infinite ammo?")
 MACRO_CONFIG_INT(SvInstaGib, sv_instagib, 0, 0, 1, CFGFLAG_SERVER, "Instagib mode")
 MACRO_CONFIG_INT(SvPickups, sv_pickups, 1, 0, 1, CFGFLAG_SERVER, "Spawn pickups on the map?")
+MACRO_CONFIG_INT(SvDamageSelf, sv_damage_self, 1, 0, 1, CFGFLAG_SERVER, "Can people damage themselves?")
 // end dikumod
 
 // debug
