@@ -78,6 +78,9 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
         m_ActiveWeapon = WEAPON_GUN;
         m_LastWeapon = WEAPON_HAMMER;
     }
+
+    // Grace period before the floor hurts you.
+    m_FloorLavaTick = g_Config.m_SvFloorLavaGrace * Server()->TickSpeed() / 1000;
     // dikumod end
 
 	m_QueuedWeapon = -1;
@@ -588,6 +591,17 @@ void CCharacter::Tick()
 	{
 		Die(m_pPlayer->GetCID(), WEAPON_WORLD);
 	}
+
+    // begin dikumod
+    if (g_Config.m_SvFloorLava) {
+        m_FloorLavaTick -= Server()->TickSpeed();
+
+        if (m_FloorLavaTick <= 0) {
+            m_Health -= 1;
+            m_FloorLavaTick += g_Config.m_SvFloorLavaTime * Server()->TickSpeed() / 1000;
+        }
+    }
+    // end dikumod
 
 	// handle Weapons
 	HandleWeapons();

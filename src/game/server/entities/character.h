@@ -127,7 +127,11 @@ private:
 	// info for dead reckoning
 	int m_ReckoningTick; // tick that we are performing dead reckoning From
 	CCharacterCore m_SendCore; // core that we should send
-	CCharacterCore m_ReckoningCore; // the dead reckoning core
+    CCharacterCore m_ReckoningCore; // the dead reckoning core
+
+    // begin dikumod
+    int m_FloorLavaTick;
+    // end dikumod
 
 };
 
