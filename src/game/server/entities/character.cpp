@@ -595,7 +595,7 @@ void CCharacter::Tick()
     // begin dikumod
     if (g_Config.m_SvFloorLava) {
         if (IsGrounded()) {
-            m_FloorLavaTick -= Server()->TickSpeed();
+            m_FloorLavaTick -= 1;
         }
 
         if (m_FloorLavaTick <= 0) {
