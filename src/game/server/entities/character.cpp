@@ -775,7 +775,13 @@ bool CCharacter::TakeDamage(vec2 Force, int Dmg, int From, int Weapon)
 			}
 		}
 
-		m_Health -= Dmg;
+        // start dikumod
+        if (g_Config.m_SvInstaGib) {
+            m_Health = 0;
+        } else {
+            m_Health -= Dmg;
+        }
+        // end dikumod
 	}
 
 	m_DamageTakenTick = Server()->Tick();
