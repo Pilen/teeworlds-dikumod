@@ -56,8 +56,28 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
 {
 	m_EmoteStop = -1;
 	m_LastAction = -1;
-	m_ActiveWeapon = WEAPON_GUN;
-	m_LastWeapon = WEAPON_HAMMER;
+
+    // dikumod begin
+    if (g_Config.m_SvStartWeapon != 0) {
+        int weapon;
+        switch (g_Config.m_SvStartWeapon) {
+            case 1: weapon = WEAPON_HAMMER;  break;
+            case 2: weapon = WEAPON_GUN;     break;
+            case 3: weapon = WEAPON_SHOTGUN; break;
+            case 4: weapon = WEAPON_GRENADE; break;
+            case 5: weapon = WEAPON_RIFLE;   break;
+            case 6: weapon = WEAPON_NINJA;   break;
+            default: weapon = WEAPON_RIFLE;
+        }
+
+        m_ActiveWeapon = weapon;
+        m_LastWeapon = weapon;
+    } else {
+        m_ActiveWeapon = WEAPON_GUN;
+        m_LastWeapon = WEAPON_HAMMER;
+    }
+    // dikumod end
+
 	m_QueuedWeapon = -1;
 
 	m_pPlayer = pPlayer;

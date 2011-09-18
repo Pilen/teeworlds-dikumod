@@ -81,6 +81,10 @@ MACRO_CONFIG_INT(SvVoteKick, sv_vote_kick, 1, 0, 1, CFGFLAG_SERVER, "Allow votin
 MACRO_CONFIG_INT(SvVoteKickMin, sv_vote_kick_min, 0, 0, MAX_CLIENTS, CFGFLAG_SERVER, "Minimum number of players required to start a kick vote")
 MACRO_CONFIG_INT(SvVoteKickBantime, sv_vote_kick_bantime, 5, 0, 1440, CFGFLAG_SERVER, "The time to ban a player if kicked by vote. 0 makes it just use kick")
 
+// begin dikumod
+MACRO_CONFIG_INT(SvStartWeapon, sv_start_weapon, 0, 0, 6, CFGFLAG_SERVER, "Choose a specific starting weapon. 0 = off, 1 = hammer, 2 = gun, 3 = shotgun, 4 = grenade, 5 = rifle, 6 = katana")
+// end dikumod
+
 // debug
 #ifdef CONF_DEBUG // this one can crash the server if not used correctly
 	MACRO_CONFIG_INT(DbgDummies, dbg_dummies, 0, 0, 15, CFGFLAG_SERVER, "")
