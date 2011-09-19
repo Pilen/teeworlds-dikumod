@@ -1,0 +1,24 @@
+# Maps of teeworlds-dikumod
+
+## Official teeworlds maps:
+* ctf1.map  
+* ctf2.map  
+* ctf3.map  
+* ctf4.map  
+* ctf5.map  
+* ctf6.map  
+* ctf7.map  
+* dm1.map  
+* dm2.map  
+* dm6.map  
+* dm7.map  
+* dm8.map  
+* dm9.map  
+
+## Maps for teeworlds-dikumod:
+* ctf_diku.map  
+Made by Ulrik at DIKU, this is the third version.
+
+## Maps made by other:
+These maps were not created by or for teeworlds-dikumod, but we liked them so much we included them anyway.  
+We would like to give credit to the authors so please contact us if you made one of these awesome maps!
