@@ -90,6 +90,8 @@ MACRO_CONFIG_INT(SvDamageSelf, sv_damage_self, 1, 0, 1, CFGFLAG_SERVER, "Can peo
 MACRO_CONFIG_INT(SvFloorLava, sv_floor_lava, 0, 0, 1, CFGFLAG_SERVER, "Standing on the floor damages you.")
 MACRO_CONFIG_INT(SvFloorLavaGrace, sv_floor_lava_grace, 2500, 0, 20000, CFGFLAG_SERVER, "Grace period before the floor starts damaging you (ms)")
 MACRO_CONFIG_INT(SvFloorLavaTime, sv_floor_lava_time, 1000, 0, 20000, CFGFLAG_SERVER, "Time between the floor damaging you (ms)")
+MACRO_CONFIG_INT(SvLaserBounce, sv_laser_bounce, 0, 0, 1, CFGFLAG_SERVER, "Create an explosion on first rifle bounce, allowing laser jumps.")
+MACRO_CONFIG_INT(SvLaserBounceDamage, sv_laser_bounce_damage, 1, 0, 1, CFGFLAG_SERVER, "Should explosion from laser do damage?")
 // end dikumod
 
 // debug

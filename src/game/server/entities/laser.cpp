@@ -2,6 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include <game/generated/protocol.h>
 #include <game/server/gamecontext.h>
+#include <engine/shared/config.h>
 #include "laser.h"
 
 CLaser::CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEnergy, int Owner)
@@ -47,6 +48,12 @@ void CLaser::DoBounce()
 
 	if(GameServer()->Collision()->IntersectLine(m_Pos, To, 0x0, &To))
 	{
+        // dikumod begin
+        if (g_Config.m_SvLaserBounce && m_Bounces == 0) {
+            GameServer()->CreateExplosion(To, m_Owner, WEAPON_RIFLE, g_Config.m_SvLaserBounceDamage);
+        }
+        // dikumod end
+
 		if(!HitCharacter(m_Pos, To))
 		{
 			// intersected
