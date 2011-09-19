@@ -49,8 +49,8 @@ void CLaser::DoBounce()
 	if(GameServer()->Collision()->IntersectLine(m_Pos, To, 0x0, &To))
 	{
         // dikumod begin
-        if (g_Config.m_SvLaserBounce && m_Bounces == 0) {
-            GameServer()->CreateExplosion(To, m_Owner, WEAPON_RIFLE, g_Config.m_SvLaserBounceDamage);
+        if (g_Config.m_SvLaserJump && m_Bounces == 0) {
+            GameServer()->CreateExplosion(To, m_Owner, WEAPON_RIFLE, true);
         }
         // dikumod end
 

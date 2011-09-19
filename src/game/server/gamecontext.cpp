@@ -141,6 +141,11 @@ void CGameContext::CreateExplosion(vec2 Pos, int Owner, int Weapon, bool NoDamag
 				ForceDir = normalize(Diff);
 			l = 1-clamp((l-InnerRadius)/(Radius-InnerRadius), 0.0f, 1.0f);
 			float Dmg = 6 * l;
+            // dikumod begin
+            if (g_Config.m_SvLaserJump && !g_Config.m_SvLaserJumpDamage && Weapon == WEAPON_RIFLE) {
+                Dmg = 0;
+            }
+            // dikumod end
 			if((int)Dmg)
 				apEnts[i]->TakeDamage(ForceDir*Dmg*2, (int)Dmg, Owner, Weapon);
 		}
