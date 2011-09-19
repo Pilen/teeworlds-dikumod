@@ -22,3 +22,19 @@ Made by Ulrik at DIKU, this is the third version.
 ## Maps made by other:
 These maps were not created by or for teeworlds-dikumod, but we liked them so much we included them anyway.  
 We would like to give credit to the authors so please contact us if you made one of these awesome maps!
+* ctf1_reworked.map
+* ctf_beachnight.map
+* ctf_escape_the_jail.map
+* ctf_jungle_drum.map
+* ctf_riker2.map
+* ctf_trap.map
+* dm_fly_high.map
+* dom_bridge.map
+* ctf_ayu.map
+* ctf_cold_winter.map
+* ctf_high_ground.map
+* ctf_lake.map
+* ctf_roma.map
+* ctf_ulrik2.map
+* dm_no_excuse.map
+* dom_hq.map
