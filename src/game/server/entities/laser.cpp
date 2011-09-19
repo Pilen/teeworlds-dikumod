@@ -50,7 +50,7 @@ void CLaser::DoBounce()
 	{
         // dikumod begin
         if (g_Config.m_SvLaserJump && m_Bounces == 0) {
-            GameServer()->CreateExplosion(To, m_Owner, WEAPON_RIFLE, true);
+            GameServer()->CreateExplosion(To, m_Owner, WEAPON_RIFLE, false);
         }
         // dikumod end
 
