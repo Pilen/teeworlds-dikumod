@@ -774,38 +774,38 @@ bool CCharacter::TakeDamage(vec2 Force, int Dmg, int From, int Weapon)
 		GameServer()->CreateDamageInd(m_Pos, 0, Dmg);
 	}
 
-	if(Dmg)
-	{
-		if(m_Armor)
-		{
-			if(Dmg > 1)
-			{
-				m_Health--;
-				Dmg--;
-			}
+    if (g_Config.m_SvDamageSelf || (From != m_pPlayer->GetCID())) { // dikumod
+        if(Dmg)
+        {
+            if(m_Armor)
+            {
+                if(Dmg > 1)
+                {
+                    m_Health--;
+                    Dmg--;
+                }
 
-			if(Dmg > m_Armor)
-			{
-				Dmg -= m_Armor;
-				m_Armor = 0;
-			}
-			else
-			{
-				m_Armor -= Dmg;
-				Dmg = 0;
-			}
-		}
-
-        // start dikumod
-        if (g_Config.m_SvDamageSelf || (From != m_pPlayer->GetCID())) {
-            if (g_Config.m_SvInstaGib) {
-                m_Health = 0;
-            } else {
-                m_Health -= Dmg;
+                if(Dmg > m_Armor)
+                {
+                    Dmg -= m_Armor;
+                    m_Armor = 0;
+                }
+                else
+                {
+                    m_Armor -= Dmg;
+                    Dmg = 0;
+                }
             }
+
+            // start dikumod
+                if (g_Config.m_SvInstaGib) {
+                    m_Health = 0;
+                } else {
+                    m_Health -= Dmg;
+                }
+            // end dikumod
         }
-        // end dikumod
-	}
+    } // dikumod
 
 	m_DamageTakenTick = Server()->Tick();
 
