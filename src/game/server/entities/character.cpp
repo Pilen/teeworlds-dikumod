@@ -604,7 +604,7 @@ void CCharacter::Tick()
 
             if (m_Health <= 0) {
                 // TODO: Make death less hacky
-                Die(m_pPlayer->GetCID(), WEAPON_HAMMER);
+                Die(m_pPlayer->GetCID(), WEAPON_WORLD);
             }
         }
     }
