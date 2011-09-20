@@ -360,8 +360,10 @@ void IGameController::OnCharacterSpawn(class CCharacter *pChr)
 	pChr->IncreaseHealth(10);
 
 	// give default weapons
-	pChr->GiveWeapon(WEAPON_HAMMER, -1);
-	pChr->GiveWeapon(WEAPON_GUN, 10);
+    if (g_Config.m_SvStartWeapon == 0) { // dikumod
+        pChr->GiveWeapon(WEAPON_HAMMER, -1);
+        pChr->GiveWeapon(WEAPON_GUN, 10);
+    } // dikumod
 }
 
 void IGameController::DoWarmup(int Seconds)
