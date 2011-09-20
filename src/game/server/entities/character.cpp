@@ -70,10 +70,10 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
             default: weapon = WEAPON_RIFLE;
         }
 
+        GiveWeapon(weapon, g_pData->m_Weapons.m_aId[weapon].m_Maxammo);
+
         m_ActiveWeapon = weapon;
         m_LastWeapon = weapon;
-
-        m_aWeapons[weapon].m_Ammo = -1;
     } else {
         m_ActiveWeapon = WEAPON_GUN;
         m_LastWeapon = WEAPON_HAMMER;
