@@ -82,7 +82,7 @@ MACRO_CONFIG_INT(SvVoteKickMin, sv_vote_kick_min, 0, 0, MAX_CLIENTS, CFGFLAG_SER
 MACRO_CONFIG_INT(SvVoteKickBantime, sv_vote_kick_bantime, 5, 0, 1440, CFGFLAG_SERVER, "The time to ban a player if kicked by vote. 0 makes it just use kick")
 
 // begin dikumod
-MACRO_CONFIG_INT(SvSplashDamage, sv_splash_damage, 1, 0 ,1, CFGFLAG_SERVER, "Should weapons deal splash damage?")
+MACRO_CONFIG_INT(SvPush, sv_push, 0, 0, 1, CFGFLAG_SERVER, "Push-mode?")
 MACRO_CONFIG_INT(SvHammer, sv_hammer, 1, 0, 1, CFGFLAG_SERVER, "Should players spawn with the hammer?")
 MACRO_CONFIG_INT(SvStartWeapon, sv_start_weapon, 0, 0, 6, CFGFLAG_SERVER, "Choose starting weapon. 0 = off, 1 = hammer, 2 = gun, 3 = shotgun, 4 = grenade, 5 = rifle, 6 = katana")
 MACRO_CONFIG_INT(SvInfiniteAmmo, sv_inf_ammo, 0, 0, 1, CFGFLAG_SERVER, "Infinite ammo?")
