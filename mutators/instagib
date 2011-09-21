@@ -1,0 +1,12 @@
+sv_push 0
+sv_hammer 
+sv_start_weapon 5
+sv_inf_ammo 1
+sv_instagib 1
+sv_pickups 0
+sv_damage_self 0
+sv_floor_lava 0
+sv_floor_lava_grace 1000
+sv_floor_lava_time 500
+sv_laser_jump 1
+sv_laser_jump_damage 0
