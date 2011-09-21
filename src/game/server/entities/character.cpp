@@ -742,13 +742,16 @@ void CCharacter::Die(int Killer, int Weapon)
 
 bool CCharacter::TakeDamage(vec2 Force, int Dmg, int From, int Weapon)
 {
-	m_Core.m_Vel += Force;
+    if (!g_Config.m_SvPush)
+        m_Core.m_Vel += Force;
+    else
+	    m_Core.m_Vel += Force * 3;
 
 	if(GameServer()->m_pController->IsFriendlyFire(m_pPlayer->GetCID(), From) && !g_Config.m_SvTeamdamage)
 		return false;
 
-    // dikumod: Dmg of -1 means we only want the force, not the damage and indication.
-    if (Dmg == -1)
+    // dikumod: Dmg of -1 or push mode means we only want the force, not the damage and indication.
+    if (Dmg == -1 || g_Config.m_SvPush)
         return false;
 
 	// m_pPlayer only inflicts half damage on self
