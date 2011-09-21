@@ -359,11 +359,14 @@ void IGameController::OnCharacterSpawn(class CCharacter *pChr)
 	// default health
 	pChr->IncreaseHealth(10);
 
-	// give default weapons
-    if (g_Config.m_SvStartWeapon == 0) { // dikumod
+    // dikumod
+    if (g_Config.m_SvHammer != 0)
         pChr->GiveWeapon(WEAPON_HAMMER, -1);
-        pChr->GiveWeapon(WEAPON_GUN, 10);
-    } // dikumod
+    int weapon = WEAPON_GUN;
+    if (g_Config.m_SvStartWeapon > 0 && g_Config.m_SvStartWeapon < NUM_WEAPONS + 1)
+	    weapon = g_Config.m_SvStartWeapon - 1;
+    pChr->GiveWeapon(weapon, g_pData->m_Weapons.m_aId[weapon].m_Maxammo);
+    // dikumod
 }
 
 void IGameController::DoWarmup(int Seconds)

@@ -58,20 +58,8 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
 	m_LastAction = -1;
 
     // dikumod begin
-    if (g_Config.m_SvStartWeapon != 0) {
-        int weapon;
-        switch (g_Config.m_SvStartWeapon) {
-            case 1: weapon = WEAPON_HAMMER;  break;
-            case 2: weapon = WEAPON_GUN;     break;
-            case 3: weapon = WEAPON_SHOTGUN; break;
-            case 4: weapon = WEAPON_GRENADE; break;
-            case 5: weapon = WEAPON_RIFLE;   break;
-            case 6: weapon = WEAPON_NINJA;   break;
-            default: weapon = WEAPON_RIFLE;
-        }
-
-        GiveWeapon(weapon, g_pData->m_Weapons.m_aId[weapon].m_Maxammo);
-
+    if (g_Config.m_SvStartWeapon > 0 && g_Config.m_SvStartWeapon < NUM_WEAPONS + 1) {
+	    int weapon = g_Config.m_SvStartWeapon - 1;
         m_ActiveWeapon = weapon;
         m_LastWeapon = weapon;
     } else {
@@ -449,7 +437,7 @@ void CCharacter::FireWeapon()
 	m_AttackTick = Server()->Tick();
 
     // start dikumod
-	if(m_aWeapons[m_ActiveWeapon].m_Ammo > 0 && !g_Config.m_SvInfiniteAmmo) // -1 == unlimited
+	if(m_aWeapons[m_ActiveWeapon].m_Ammo > 0) // -1 == unlimited
 		m_aWeapons[m_ActiveWeapon].m_Ammo--;
     // end dikumod
 
@@ -503,7 +491,11 @@ bool CCharacter::GiveWeapon(int Weapon, int Ammo)
 	if(m_aWeapons[Weapon].m_Ammo < g_pData->m_Weapons.m_aId[Weapon].m_Maxammo || !m_aWeapons[Weapon].m_Got)
 	{
 		m_aWeapons[Weapon].m_Got = true;
-		m_aWeapons[Weapon].m_Ammo = min(g_pData->m_Weapons.m_aId[Weapon].m_Maxammo, Ammo);
+        // dikumod
+        if (g_Config.m_SvInfiniteAmmo != 0)
+		  m_aWeapons[Weapon].m_Ammo = -1;
+        else //dikumod
+		  m_aWeapons[Weapon].m_Ammo = min(g_pData->m_Weapons.m_aId[Weapon].m_Maxammo, Ammo);
 		return true;
 	}
 	return false;
