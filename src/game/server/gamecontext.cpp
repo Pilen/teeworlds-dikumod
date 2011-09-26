@@ -13,6 +13,7 @@
 #include "gamemodes/tdm.h"
 #include "gamemodes/ctf.h"
 #include "gamemodes/mod.h"
+#include "gamemodes/wtf.h"
 
 enum
 {
@@ -1368,7 +1369,11 @@ void CGameContext::OnInit(/*class IKernel *pKernel*/)
 		m_pController = new CGameControllerCTF(this);
 	else if(str_comp(g_Config.m_SvGametype, "tdm") == 0)
 		m_pController = new CGameControllerTDM(this);
-	else
+	//DIKUMOD begin
+	else if(str_comp(g_Config.m_SvGametype, "wtf") == 0)
+		m_pController = new CGameControllerWTF(this);
+	//DIKUMOD end
+       	else
 		m_pController = new CGameControllerDM(this);
 
 	// setup core world
