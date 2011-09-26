@@ -23,9 +23,8 @@ bool CGameControllerWTF::OnEntity(int Index, vec2 Pos)
   if(IGameController::OnEntity(Index, Pos))
     return true;
 
-  int Team = -1;
   if (Index == ENTITY_FLAGSTAND_BLUE && !m_pFlag) {
-    m_pFlag = new CFlag(&GameServer()->m_World, Team);
+    m_pFlag = new CFlag(&GameServer()->m_World, TEAM_BLUE);
     m_pFlag->m_StandPos = Pos;
     m_pFlag->m_Pos = Pos;
     GameServer()->m_World.InsertEntity(m_pFlag);
@@ -40,16 +39,18 @@ int CGameControllerWTF::OnCharacterDeath(class CCharacter *pVictim, class CPlaye
   IGameController::OnCharacterDeath(pVictim, pKiller, WeaponID);
   int HadFlag = 0;
 
-  // drop flag
+  // killer has flag
   if (m_pFlag && pKiller && pKiller->GetCharacter() &&
       m_pFlag->m_pCarryingCharacter == pKiller->GetCharacter())
     HadFlag |= 2;
+  // victims drop flag
   if (m_pFlag && m_pFlag->m_pCarryingCharacter == pVictim) {
     GameServer()->CreateSoundGlobal(SOUND_CTF_DROP);
     m_pFlag->m_DropTick = Server()->Tick();
-    m_pFlag->m_pCarryingCharacter = 0;
+    m_pFlag->m_pCarryingCharacter = NULL;
     m_pFlag->m_Vel = vec2(0,0);
 
+    // add score to killer
     if (pKiller && pKiller->GetTeam() != pVictim->GetPlayer()->GetTeam())
       pKiller->m_Score++;
     HadFlag |= 1;
@@ -144,7 +145,7 @@ void CGameControllerWTF::Tick()
         return;
     }
 
-    // if carried add points
+    // if carried, move + add points
     if (m_pFlag->m_pCarryingCharacter) {
       m_pFlag->m_Pos = m_pFlag->m_pCarryingCharacter->m_Pos;
       m_aTeamscore[m_pFlag->m_pCarryingCharacter->GetPlayer()->GetTeam()] += 1;
@@ -209,5 +210,5 @@ void CGameControllerWTF::Tick()
                                            vec2(m_pFlag->ms_PhysSize, m_pFlag->ms_PhysSize), 0.5f);
       }
     }
-  }
+  }//flag exists
 }
